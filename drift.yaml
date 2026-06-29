@@ -1,0 +1,35 @@
+version: 1
+
+# driftdoc registry — machine-checkable claims about this codebase.
+# Run "driftdoc check" to verify. Exit 0 = all current, 1 = drift, 2 = error.
+# Each claim: in <where>, <match> <expect> should hold.
+
+defaults:
+  root: .                      # globs resolve against this dir (relative to THIS file)
+  # doc: docs/ARCHITECTURE.md  # default doc these claims back (used by 'report')
+
+claims:
+  - id: example-contains
+    desc: the README mentions the project name
+    where: README.md
+    match: contains
+    expect: "driftdoc"
+
+  # - id: example-absent          # assert a removed thing stays gone
+  #   desc: the deprecated flag was removed
+  #   where: "**/*.go"
+  #   match: absent
+  #   expect: "OldDeprecatedFlag"
+
+  # - id: example-regex           # assert a pattern exists
+  #   desc: the main entrypoint defines a version var
+  #   where: cmd/**/*.go
+  #   match: regex
+  #   expect: 'var version'
+
+  # - id: example-count           # assert an exact occurrence count
+  #   desc: there is exactly one root command
+  #   where: cmd/**/*.go
+  #   match: count
+  #   expect: "rootCmd ="
+  #   count: 1
