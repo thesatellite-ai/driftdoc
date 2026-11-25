@@ -62,3 +62,7 @@ You scale by adding **rows**, never by writing per-fact code.
 ## Roadmap
 
 Tier 2 (structured: json/yaml/xml/html) · Tier 3 (symbol/AST via tree-sitter, rename-resilient) · Tier 4 (behavioral/live: HTTP, CLI, introspection) · `report` (stamp status into the doc) · `gen` (generate doc sections from code) · `fix` (AI repair) · **reverse impact** (a diff → which documented claims to review) · coverage score + PR bot. Full design + decisions in [`DESIGN.md`](DESIGN.md).
+
+## Names guard
+
+Before contributing, enable the repo's git hooks once per clone: `git config core.hooksPath .githooks`. They run `scripts/check-names.sh`, which blocks private names (clients, people, internal hosts) from commits, commit messages and pushes. It reads a word list kept outside the repo (`$NAMES_GUARD_FILE` or `~/.config/names-guard/terms.txt`) and skips with a warning when there is none. Run it over the whole tree with `scripts/check-names.sh --all`. Words that are legitimate in this repo go in `.github/names-allow.txt`.

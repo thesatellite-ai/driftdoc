@@ -27,6 +27,11 @@ tasks:
       - test -z "$(gofmt -l .)" || (echo 'gofmt needed:'; gofmt -l .; exit 1)
       - go vet ./...
 
+  names:
+    desc: Check tracked files for private names (needs the local word list; skips without it)
+    cmds:
+      - ./scripts/check-names.sh --all
+
   check:
     desc: Dogfood — run driftdoc against this repo's own drift.yaml
     cmds:
